@@ -41,6 +41,21 @@ const displayMeals = (meals) =>{
                     <p class="text-normal text-neutral-500 "> Area: 
                     ${meal.strArea}
                     </p>
+                    <div class="flex justify-start space-x-2 pt-2">
+                        <button onclick="loadMealDetail(${meal.idMeal})"
+                            type="button"
+                            class="inline-block rounded bg-primary px-6 pt-2.5 pb-2 bg-[#FFC107]
+                            text-xs font-medium leading-normal text-black 
+                            shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out 
+                            hover:bg-amber-400 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] 
+                            focus:bg-amber-400 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] "
+                            data-te-toggle="modal"
+                            data-te-target="#staticBackdrop"
+                            data-te-ripple-init
+                            data-te-ripple-color="light">
+                            Details
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,6 +66,28 @@ const displayMeals = (meals) =>{
 
     })
     document.getElementById("show-all").style.visibility = 'visible';
+}
+
+// async await
+const loadMealDetail = async(idMeal) => {
+    console.log(idMeal);
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        displayMealDetails(data.meals[0]);
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+const displayMealDetails = (meal) => {
+    document.getElementById('mealDetailsLabel').innerText = meal.strMeal;
+    const mealsDetails = document.getElementById('mealDetailsBody');
+    mealsDetails.innerHTML = `
+        <img class="object-cover" src="${meal.strMealThumb}">
+    `
 }
 
 const loadAllFood = async () => {
@@ -90,9 +127,6 @@ const displayAllMeals = (meals) =>{
                     </p>
                     <p class="text-normal py-2 text-neutral-500"> Category:
                     ${meal.strCategory}
-                    </p>
-                    <p class="text-normal text-neutral-500 "> Area: 
-                    ${meal.strArea}
                     </p>
                 </div>
             </div>
