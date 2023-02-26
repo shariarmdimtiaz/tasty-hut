@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasty HUT</title>
+
+    <!-- tailwindcss link -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/d1e07ee017.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="">
+    <header>
+      <nav
+        class="relative flex w-full items-center justify-between bg-white py-7 px-12 md:flex-wrap md:justify-start"
+        data-te-navbar-ref
+      >
+        <div class="flex w-full flex-wrap items-center justify-between px-6">
+          <div class="flex items-center">
+            <button
+              class="mr-2 border-0 bg-transparent py-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
+              type="button"
+              data-te-collapse-init
+              data-te-target="#navbarSupportedContentX"
+              aria-controls="navbarSupportedContentX"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="[&>svg]:w-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div
+            class="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto"
+            id="navbarSupportedContentX"
+            data-te-collapse-item
+          >
+            <a href="">
+              <h1 class="text-2xl font-bold text-[#403F3F]">Tasty HUT</h1>
+            </a>
+            <ul
+              class="ml-auto flex flex-col lg:flex-row"
+              data-te-navbar-nav-ref
+            >
+              <li data-te-nav-item-ref>
+                <div class="flex justify-center space-x-2">
+                  <button
+                    type="button"
+                    class="bg-[#FFC107] inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium leading-normal text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-amber-500"
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div
+        class="relative overflow-hidden bg-cover bg-no-repeat"
+        style="
+          background-position: 50%;
+          background-image: url('images/banner.png');
+          height: 350px;
+        "
+      >
+        <div
+          class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed"
+          style="background-color: rgba(0, 0, 0, 0.75)"
+        >
+          <div class="flex h-full items-center justify-center">
+            <div class="px-6 text-center text-white md:px-12">
+              <h1 class="mb-6 text-5xl font-bold text-center">
+                Taste Our Delicious <br />
+                Best Foods
+              </h1>
+              <h3 class="mb-8 text-center font-semibold">
+                There are many variations of passages of Lorem Ipsum available,
+                but the majority have <br />
+                suffered alteration in some form, by injected humou.
+              </h3>
+              <div class="relative mb-4 flex w-full flex-wrap items-stretch">
+                <span
+                  class="bg-white flex items-center whitespace-nowrap rounded-l border-3 border-solid border-white px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] text-neutral-700 dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200"
+                  ><i class="fa-solid fa-magnifying-glass text-gray-500"></i
+                ></span>
+                <input id="search-text"
+                  type="text"
+                  class="text-gray-500 bg-white relative m-0 block w-[1px] min-w-0 flex-auto bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] outline-none transition ease-in-out focus:z-[3] focus:border-primary-600 focus:text-neutral-600 focus:shadow-te-primary focus:outline-none dark:text-neutral-600 dark:placeholder:text-neutral-600"
+                  placeholder="Search any food"
+                  aria-label="Search any food"
+                  aria-describedby="button-addon2"
+                />
+                <button
+                  class="relative z-[2] rounded-r bg-[#FFC107] px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-amber-500 hover:shadow-lg focus:z-[3] focus:bg-amber-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-amber-500 active:shadow-lg"
+                  type="button"
+                  id="btn-search"
+                >
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="container mx-auto py-12">
+      <!-- food container  -->
+      <h1 class="text-center text-4xl font-bold py-12">Your Favorite Food</h1>
+
+      <section class="">
+        <div
+          id="meals-container"
+          class="grid grid-cols-1 md:grid-cols-2 gap-3"
+        ></div>
+      </section>
+      <div class="text-center lg:px-12">
+        <!-- <button onclick="showAllDataTogether()" class="btn btn-primary my-4">
+          See all
+        </button> -->
+        <button
+          id="show-all"
+          type="button"
+          class="bg-[#FFC107] inline-block rounded bg-primary mt-5 px-6 pt-2.5 pb-2 text-xs font-medium leading-normal text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-amber-500"
+        >
+          Show All
+        </button>
+      </div>
+      <!-- <div id="modal-info">
+        <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+      </div> -->
+
+      <div></div>
+    </main>
+    <footer class="bg-amber-100 text-center text-neutral-800 lg:text-left">
+      <div class="mx-6 py-10 text-center md:text-left">
+        <div class="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div class="">
+            <h6
+              class="mb-4 flex justify-center font-semibold uppercase md:justify-start"
+            >
+              Menu
+            </h6>
+            <p class="mb-4">
+              <a href="#!" class="text-neutral-600">Angular</a>
+            </p>
+            <p class="mb-4">
+              <a href="#!" class="text-neutral-600">React</a>
+            </p>
+            <p class="mb-4">
+              <a href="#!" class="text-neutral-600">Vue</a>
+            </p>
+            <p>
+              <a href="#!" class="text-neutral-600">Laravel</a>
+            </p>
+          </div>
+          <div class="">
+            <h6
+              class="mb-4 flex justify-center font-semibold uppercase md:justify-start"
+            >
+              Products
+            </h6>
+            <p class="mb-4">
+              <a href="#!" class="text-neutral-600">Angular</a>
+            </p>
+            <p class="mb-4">
+              <a href="#!" class="text-neutral-600">React</a>
+            </p>
+            <p class="mb-4">
+              <a href="#!" class="text-neutral-600">Vue</a>
+            </p>
+            <p>
+              <a href="#!" class="text-neutral-600">Laravel</a>
+            </p>
+          </div>
+          <div class="">
+            <h6
+              class="mb-4 flex justify-center font-semibold uppercase md:justify-start"
+            >
+              Useful links
+            </h6>
+            <p class="mb-4">
+              <a href="#!" class="text-neutral-600">Pricing</a>
+            </p>
+            <p class="mb-4">
+              <a href="#!" class="text-neutral-600">Settings</a>
+            </p>
+            <p class="mb-4">
+              <a href="#!" class="text-neutral-600">Orders</a>
+            </p>
+            <p>
+              <a href="#!" class="text-neutral-600">Help</a>
+            </p>
+          </div>
+          <div>
+            <h6
+              class="mb-4 flex justify-center font-semibold uppercase md:justify-start"
+            >
+              Subscribe to our newsletter
+            </h6>
+            <p class="mb-4 flex items-center justify-center md:justify-start">
+              There are many variations of passages of available, but the
+              majority have suffered
+            </p>
+            <div class="mb-4 flex items-center justify-center md:justify-start">
+              <input
+                type="email"
+                class="text-black peer block min-h-[auto] w-full rounded border border-gray-400 bg-transparent py-[0.32rem] px-3 leading-[1.6] outline-none transition-all duration-200 ease-linear"
+                id="exampleFormControlInputEmail"
+                placeholder="Email address"
+              />
+              &nbsp;&nbsp;
+              <button
+                type="button"
+                class="bg-[#FFC107] inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium leading-normal text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-amber-500"
+              >
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-amber-200 p-6 text-center">
+        <span>© 2023 Copyright:</span>
+        <a class="font-semibold text-neutral-600" href="https://tailwind.com/"
+          >Tasty HUT</a
+        >
+      </div>
+    </footer>
+
+    <!-- js link -->
+    <script src="js/tastyhut.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+  </body>
+</html>
